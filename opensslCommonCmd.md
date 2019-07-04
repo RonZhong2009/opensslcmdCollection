@@ -20,9 +20,9 @@
   openssl ca -config openssl-ca.cnf -policy signing_policy -extensions signing_req -out testsvr-cert.der -infiles servercert.csr  -passout pass:passwordstring
 
 #### der file can't be used as key file, only pem file or key file
-  openssl ca -config openssl-ca.cnf -key testcakey.der -passin pass:passwordstring -policy signing_policy -extensions signing_req -out testsvr-cert.der -infiles servercert.csr 
-  openssl ca -config openssl-ca.cnf -passin pass:passwordstring -policy signing_policy -extensions signing_req -out testsvr-cert.der -infiles servercert.csr 
-  openssl ca -config openssl-ca.cnf -policy signing_policy -extensions signing_req -out testsvr-cert.pem -infiles servercert.csr 
+  openssl ca -config openssl-ca.cnf -key testcakey.der -passin pass:passwordstring -policy signing_policy -extensions signing_req -out testsvr-cert.der -infiles servercert.csr  
+  openssl ca -config openssl-ca.cnf -passin pass:passwordstring -policy signing_policy -extensions signing_req -out testsvr-cert.der -infiles servercert.csr  
+ openssl ca -config openssl-ca.cnf -policy signing_policy -extensions signing_req -out testsvr-cert.pem -infiles servercert.csr 
 
 #### convert the pem into pcks8
   openssl pkcs8 -topk8 -inform PEM -in testcakeypair.pem -outform DER -out testcakey.der -passout pass:2222passwordstr -v1 PBES2 -v2prf hmacWithSHA256 -iter 1000000  
